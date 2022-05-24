@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Armando/Codigo/Android/GestoVideoClube/app/src/main/res/layout/activity_main.xml" value="0.10989583333333333" />
+        <entry key="..\:/Armando/Codigo/Android/GestoVideoClube/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Armando/Codigo/Android/GestoVideoClube/app/src/main/res/layout/fragment_clientes.xml" value="0.25" />
+        <entry key="..\:/Armando/Codigo/Android/GestoVideoClube/app/src/main/res/layout/fragment_filmes.xml" value="0.25" />
+        <entry key="..\:/Armando/Codigo/Android/GestoVideoClube/app/src/main/res/layout/fragment_requesitados.xml" value="0.25" />
+        <entry key="..\:/Armando/Codigo/Android/GestoVideoClube/app/src/main/res/menu/my_menu.xml" value="0.25" />
       </map>
     </option>
   </component>

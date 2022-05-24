@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/clientes"
+        android:title="Clientes"
+        android:icon="@drawable/ic_person"/>
+    <item
+        android:id="@+id/filmes"
+        android:title="Filmes"
+        android:icon="@drawable/ic_movies"/>
+    <item
+        android:id="@+id/requesitados"
+        android:title="Requesitados"
+        android:icon="@drawable/ic_tv"/>
+</menu>

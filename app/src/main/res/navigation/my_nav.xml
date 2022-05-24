@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/filmes">
+
+    <fragment
+        android:id="@+id/filmes"
+        android:name="com.example.gestovideoclube.Filmes"
+        android:label="fragment_filmes"
+        tools:layout="@layout/fragment_filmes" />
+    <fragment
+        android:id="@+id/clientes"
+        android:name="com.example.gestovideoclube.Clientes"
+        android:label="fragment_clientes"
+        tools:layout="@layout/fragment_clientes" />
+    <fragment
+        android:id="@+id/requesitados"
+        android:name="com.example.gestovideoclube.Requesitados"
+        android:label="fragment_requesitados"
+        tools:layout="@layout/fragment_requesitados" />
+</navigation>
