@@ -20,4 +20,8 @@
         android:name="com.example.gestovideoclube.Requesitados"
         android:label="Requesitados"
         tools:layout="@layout/fragment_requesitados" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.gestovideoclube.SettingsFragment"
+        android:label="Settings" />
 </navigation>
