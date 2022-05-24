@@ -8,16 +8,16 @@
     <fragment
         android:id="@+id/filmes"
         android:name="com.example.gestovideoclube.Filmes"
-        android:label="fragment_filmes"
+        android:label="Filmes"
         tools:layout="@layout/fragment_filmes" />
     <fragment
         android:id="@+id/clientes"
         android:name="com.example.gestovideoclube.Clientes"
-        android:label="fragment_clientes"
+        android:label="Clientes"
         tools:layout="@layout/fragment_clientes" />
     <fragment
         android:id="@+id/requesitados"
         android:name="com.example.gestovideoclube.Requesitados"
-        android:label="fragment_requesitados"
+        android:label="Requesitados"
         tools:layout="@layout/fragment_requesitados" />
 </navigation>
