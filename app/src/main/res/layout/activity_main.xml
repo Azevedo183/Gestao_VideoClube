@@ -29,4 +29,40 @@
         app:menu="@menu/my_menu"
         />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_pop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="@color/purple_500"
+        android:clickable="true"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_add" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_filme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:tint="@color/white"
+        android:clickable="false"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/add_pop"
+        app:layout_constraintEnd_toEndOf="@+id/add_pop"
+        app:srcCompat="@drawable/ic_movies"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_cliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:clickable="false"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/add_filme"
+        app:layout_constraintEnd_toEndOf="@+id/add_pop"
+        app:srcCompat="@drawable/ic_person" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

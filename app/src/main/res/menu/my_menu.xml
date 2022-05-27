@@ -2,22 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/clientes"
+        android:title="@string/clientes"
+        android:icon="@drawable/ic_person"
+
+        />
+    <item
         android:id="@+id/filmes"
-        android:title="Filmes"
+        android:title="@string/filmes"
         android:icon="@drawable/ic_movies"
         />
     <item
-        android:id="@+id/clientes"
-        android:title="Clientes"
-        android:icon="@drawable/ic_person"
-        />
-    <item
         android:id="@+id/requesitados"
-        android:title="Requesitados"
+        android:title="@string/Requesitados"
         android:icon="@drawable/ic_tv"/>
-    <item
-        android:id="@+id/setings"
-        android:title="Defenições"
-        android:icon="@drawable/ic_settings"
-    />
 </menu>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gestão VideoClube</string>
+    <string name="hello_blank_fragment">Olá fragmento em branco</string>
+    <string name="messages_header">Mensagens</string>
+    <string name="sync_header">Sincronizar</string>
+    <string name="signature_title">Olá fragmento em branco</string>
+    <string name="reply_title">Ação de resposta padrão</string>
+    <string name="sync_title">Sincronize e-mails periodicamente</string>
+    <string name="attachment_title">Baixar anexos recebidos</string>
+    <string name="attachment_summary_on">Baixe automaticamente anexos para e-mails recebidos</string>
+    <string name="attachment_summary_off">Faça o download de anexos apenas quando solicitado manualmente</string>
+    <string name="Requesitados">Requesitados</string>
+    <string name="filmes">Filmes</string>
+    <string name="clientes">Clientes</string>
+</resources>
