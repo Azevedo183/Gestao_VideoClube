@@ -13,4 +13,10 @@
     <string name="Requesitados">Requesitados</string>
     <string name="filmes">Filmes</string>
     <string name="clientes">Clientes</string>
+    <string name="Name">Nome</string>
+    <string name="Num">Numero</string>
+    <string name="register">Registar</string>
+    <string name="Name_Filmes">Titulo do Filme</string>
+    <string name="Ano_Filme">Ano do Filme</string>
+    <string name="Filme_Duração">Duração do Filme</string>
 </resources>
