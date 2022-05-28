@@ -10,65 +10,78 @@
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
         android:ems="10"
+        android:hint="@string/Name_Filmes"
         android:inputType="textPersonName"
-        android:text="@string/Name_Filmes"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.208" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:ems="10"
+        android:hint="@string/Ano_Filme"
         android:inputType="number"
-        android:text="@string/Ano_Filme"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
-        app:layout_constraintVertical_bias="0.078" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
     <EditText
         android:id="@+id/editTextNumber2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:ems="10"
+        android:hint="@string/Filme_Duração"
         android:inputType="number"
-        android:text="@string/Filme_Duração"
-        app:layout_constraintBottom_toTopOf="@+id/multiAutoCompleteTextView"
+
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber"
-        app:layout_constraintVertical_bias="0.504" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
 
-    <MultiAutoCompleteTextView
-        android:id="@+id/multiAutoCompleteTextView"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="256dp"
-        android:text="MultiAutoCompleteTextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+        android:layout_marginTop="40dp"
+        android:hint="Categoria"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumber2">
+
+        <AutoCompleteTextView
+            android:id="@+id/dropdown_field"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="40dp"
+            android:inputType="none"
+            android:textColorHint="#757575" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="40dp"
         android:text="@string/register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/multiAutoCompleteTextView"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
         app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
