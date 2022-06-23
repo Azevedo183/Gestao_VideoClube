@@ -22,7 +22,11 @@ class BaseDeDadosTest {
         categoria.id = TabelaBDCategorias(db).insert(categoria.toContentValues())
         assertNotEquals(-1, categoria.id)
     }
-    private fun insereFilme(db: SQLiteDatabase, filme)
+    private fun insereFilme(db: SQLiteDatabase, filme: Filme){
+        filme.id = TabelaBDFilmes(db).insert(filme.toContentValues())
+
+        assertNotEquals(-1, filme.id)
+    }
 
 
 
