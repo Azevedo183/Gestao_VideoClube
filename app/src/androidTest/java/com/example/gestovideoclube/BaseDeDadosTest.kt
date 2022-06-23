@@ -146,5 +146,58 @@ class BaseDeDadosTest {
         db.close()
     }
 
+    @Test
+    fun consegueEliminarCategoria(){
+        val db = getWritableDatabase()
+
+        val categoria = Categoria("Teste")
+        insereCategoria(db,categoria)
+
+        val registosEliminados = TabelaBDCategorias(db).delete(
+            "${TabelaBDCategorias.CAMPO_ID}=?",
+            arrayOf("${categoria.id}")
+        )
+
+        assertEquals(1, registosEliminados)
+
+        db.close()
+    }
+
+    @Test
+    fun consegueEliminarFilmes(){
+        val db = getWritableDatabase()
+
+        val categoria = Categoria("Documentario")
+        insereCategoria(db, categoria)
+
+        val filme = Filme("13th","2016","100",categoria)
+        insereFilme(db, filme)
+
+        val registosEliminados = TabelaBDFilmes(db).delete(
+            "${TabelaBDFilmes.CAMPO_ID}=?",
+            arrayOf("${filme.id}")
+        )
+
+        assertEquals(1,registosEliminados)
+
+        db.close()
+    }
+
+    @Test
+    fun consegueEliminarCliente(){
+        val db = getWritableDatabase()
+
+        val cliente = Cliente("Rodrigo Alberto","987456123")
+        insereCliente(db, cliente)
+
+        val registoEliminados = TabelaBDCliente(db).delete(
+            "${TabelaBDCliente.CAMPO_ID}=?",
+            arrayOf("${cliente.id}")
+        )
+
+        assertEquals(1, registoEliminados)
+
+        db.close()
+    }
 
 }
