@@ -22,6 +22,7 @@ class BaseDeDados {
         categoria.id = TabelaBDCategorias(db).insert(categoria.toContentValues())
         assertNotEquals(-1, categoria.id)
     }
+    private fun insereFilme(db: SQLiteDatabase, filme)
 
 
 
