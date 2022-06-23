@@ -28,6 +28,7 @@ class BaseDeDadosTest {
         assertNotEquals(-1, filme.id)
     }
 
+
     @Before
     fun apagaBaseDados(){
         appContext().deleteDatabase(BDVideoClubeOpenHelper.NOME)
@@ -43,6 +44,27 @@ class BaseDeDadosTest {
         db.close()
     }
 
+    @Test
+    fun consegueInserirCategoria(){
+        val db = getWritableDatabase()
+
+        insereCategoria(db, Categoria("Animação"))
+
+        db.close()
+    }
+
+    @Test
+    fun consegueInserirFilmes(){
+        val db = getWritableDatabase()
+
+        val categoria = Categoria("Animação")
+        insereCategoria(db, categoria)
+
+        val filme = Filme("Carros", "2006", "117", categoria)
+        insereFilme(db, filme)
+
+        db.close()
+    }
 
 
 
