@@ -24,8 +24,11 @@ class BaseDeDadosTest {
     }
     private fun insereFilme(db: SQLiteDatabase, filme: Filme){
         filme.id = TabelaBDFilmes(db).insert(filme.toContentValues())
-
         assertNotEquals(-1, filme.id)
+    }
+    private fun insereCliente(db: SQLiteDatabase, cliente: Cliente){
+        cliente.id = TabelaBDCliente(db).insert(cliente.toContentValues())
+        assertNotEquals(-1, cliente.id)
     }
 
 
@@ -65,7 +68,15 @@ class BaseDeDadosTest {
 
         db.close()
     }
+    @Test
+    fun consegueInserirCliente(){
+        val db = getWritableDatabase()
 
+        val cliente = Cliente("Armando Azevedo", "900000000")
+        insereCliente(db, cliente)
+
+        db.close()
+    }
 
 
 }
