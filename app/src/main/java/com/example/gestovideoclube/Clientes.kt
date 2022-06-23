@@ -1,22 +1,20 @@
 package com.example.gestovideoclube
 
+import android.database.Cursor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.loader.content.CursorLoader
+import androidx.loader.content.Loader
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Clientes.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class Clientes : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -57,5 +55,18 @@ class Clientes : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> =
+        CursorLoader(
+            requireContext(),
+            ContentProviderClientes.ENDERECO_NOME,
+            TabelaBDCliente.TODAS_COLUNAS,
+            null,
+            null,
+            TabelaBDCliente.nome_cliente
+        )
+    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?){
+        adapterClientes!!.cursor = data
     }
 }
