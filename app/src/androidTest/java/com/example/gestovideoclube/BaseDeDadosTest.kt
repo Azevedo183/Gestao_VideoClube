@@ -78,5 +78,73 @@ class BaseDeDadosTest {
         db.close()
     }
 
+    @Test
+    fun consegueAlterarCategoria(){
+        val db = getWritableDatabase()
+
+        val categoria = Categoria("Animação")
+        insereCategoria(db, categoria)
+
+        categoria.nome = "Terror"
+        val registosAlterados = TabelaBDCategorias(db).update(
+            categoria.toContentValues(),
+            "${TabelaBDCategorias.CAMPO_ID}=?",
+            arrayOf("${categoria.id}")
+        )
+
+        assertEquals(1, registosAlterados)
+
+        db.close()
+    }
+
+    @Test
+    fun consegueAlterarFilme(){
+        val db = getWritableDatabase()
+
+        val categoriaThriller = Categoria("Thriller")
+        insereCategoria(db, categoriaThriller)
+        val categoriaMisterio = Categoria("Misterio")
+        insereCategoria(db, categoriaMisterio)
+
+        val filme = Filme("Test", "2000","60", categoriaThriller)
+        insereFilme(db, filme)
+
+        filme.titulo = "Morte no Nilo"
+        filme.ano = "2022"
+        filme.duracao = "127"
+        filme.categoria = categoriaMisterio
+
+        val registosAlterados = TabelaBDFilmes(db).update(
+            filme.toContentValues(),
+            "${TabelaBDFilmes.CAMPO_ID}=?",
+            arrayOf("${filme.id}")
+        )
+
+        assertEquals(1, registosAlterados)
+
+        db.close()
+    }
+
+    @Test
+    fun consegueAlterarCliente(){
+        val db = getWritableDatabase()
+
+        val cliente = Cliente("José Bernardo", "968000000")
+        insereCliente(db, cliente)
+
+        cliente.nome = "Alberto Firmino"
+        cliente.numero_telefone = "920123456"
+
+        val registosAlterados = TabelaBDCliente(db).update(
+            cliente.toContentValues(),
+            "${TabelaBDCliente.CAMPO_ID}=?",
+            arrayOf("${cliente.id}")
+        )
+
+        assertEquals(1, registosAlterados)
+
+        db.close()
+    }
+
 
 }

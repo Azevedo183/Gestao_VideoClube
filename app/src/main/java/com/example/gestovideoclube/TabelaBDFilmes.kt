@@ -14,5 +14,8 @@ class TabelaBDFilmes(db: SQLiteDatabase) : TabelaBD(db, NOME) {
         const val ano_filme = "anoFilme"
         const val duracao_filme = "duracaoFilme"
         const val  categoria_id = "categoriaId"
+        const val CAMPO_ID = "$NOME.${BaseColumns._ID}"
+
+        val TODAS_COLUNAS = arrayOf(CAMPO_ID, titulo_filme, ano_filme, duracao_filme, categoria_id, TabelaBDCategorias.CAMPO_NOME)
     }
 }
