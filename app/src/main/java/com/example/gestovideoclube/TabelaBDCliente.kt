@@ -12,7 +12,7 @@ class TabelaBDCliente(db: SQLiteDatabase) : TabelaBD(db, NOME) {
         const val NOME = "cliente"
         const val nome_cliente = "nome"
         const val cliente_numero = "numeroCliente"
-        const val CAMPO_ID = "${TabelaBDFilmes.NOME}.${BaseColumns._ID}"
+        const val CAMPO_ID = "${NOME}.${BaseColumns._ID}"
 
         val TODAS_COLUNAS = arrayOf(CAMPO_ID, nome_cliente, cliente_numero)
     }

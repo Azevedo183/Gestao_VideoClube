@@ -128,11 +128,11 @@ class BaseDeDadosTest {
     fun consegueAlterarCliente(){
         val db = getWritableDatabase()
 
-        val cliente = Cliente("José Bernardo", "968000000")
+        val cliente = Cliente("José", "8")
         insereCliente(db, cliente)
 
-        cliente.nome = "Alberto Firmino"
-        cliente.numero_telefone = "920123456"
+        cliente.nome = "Alberto"
+        cliente.numero_telefone = "9"
 
         val registosAlterados = TabelaBDCliente(db).update(
             cliente.toContentValues(),
@@ -200,10 +200,10 @@ class BaseDeDadosTest {
     }
 
     @Test
-    fun consegueLerCategorias(){
+    fun consegueLerCategorias() {
         val db = getWritableDatabase()
 
-        val categoria = Categoria("Suspanse")
+        val categoria = Categoria("Aventura")
         insereCategoria(db, categoria)
 
         val cursor = TabelaBDCategorias(db).query(
@@ -223,7 +223,6 @@ class BaseDeDadosTest {
 
         db.close()
     }
-
     @Test
     fun consegueLerFilmes(){
         val db = getWritableDatabase()
