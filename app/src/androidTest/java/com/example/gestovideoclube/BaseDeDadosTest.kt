@@ -28,6 +28,21 @@ class BaseDeDadosTest {
         assertNotEquals(-1, filme.id)
     }
 
+    @Before
+    fun apagaBaseDados(){
+        appContext().deleteDatabase(BDVideoClubeOpenHelper.NOME)
+    }
+
+    @Test
+    fun consegueAbrirBaseDados(){
+        val openHelper = BDVideoClubeOpenHelper(appContext())
+        val db = openHelper.readableDatabase
+
+        assertTrue(db.isOpen)
+
+        db.close()
+    }
+
 
 
 
