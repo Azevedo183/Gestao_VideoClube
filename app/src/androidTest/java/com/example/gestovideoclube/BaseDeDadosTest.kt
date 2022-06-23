@@ -200,4 +200,82 @@ class BaseDeDadosTest {
         db.close()
     }
 
+    @Test
+    fun consegueLerCategorias(){
+        val db = getWritableDatabase()
+
+        val categoria = Categoria("Suspanse")
+        insereCategoria(db, categoria)
+
+        val cursor = TabelaBDCategorias(db).query(
+            TabelaBDCategorias.TODAS_COLUNAS,
+            "${TabelaBDCategorias.CAMPO_ID}=?",
+            arrayOf("${categoria.id}"),
+            null,
+            null,
+            null
+        )
+
+        assertEquals(1, cursor.count)
+        assertTrue(cursor.moveToNext())
+
+        val categoriaBD = Categoria.fromCursor(cursor)
+        assertEquals(categoria, categoriaBD)
+
+        db.close()
+    }
+
+    @Test
+    fun consegueLerFilmes(){
+        val db = getWritableDatabase()
+
+        val categoria = Categoria("Épico")
+        insereCategoria(db, categoria)
+
+        val filme = Filme("Titanic", "1997","194",categoria)
+        insereFilme(db, filme)
+
+        val cursor = TabelaBDFilmes(db).query(
+            TabelaBDFilmes.TODAS_COLUNAS,
+            "${TabelaBDFilmes.CAMPO_ID}=?",
+            arrayOf("${filme.id}"),
+            null,
+            null,
+            null
+        )
+
+        assertEquals(1, cursor.count)
+        assertTrue(cursor.moveToNext())
+
+        val filmeBD = Filme.fromCursor(cursor)
+        assertEquals(filme, filmeBD)
+
+        db.close()
+    }
+
+    @Test
+    fun consegueLerClientes(){
+        val db = getWritableDatabase()
+
+        val cliente = Cliente("Tania","123456789")
+        insereCliente(db, cliente)
+
+        val cursor = TabelaBDCliente(db).query(
+            TabelaBDCliente.TODAS_COLUNAS,
+            "${TabelaBDCliente.CAMPO_ID}=?",
+            arrayOf("${cliente.id}"),
+            null,
+            null,
+            null
+        )
+
+        assertEquals(1, cursor.count)
+        assertTrue(cursor.moveToNext())
+
+        val clienteBD = Cliente.fromCursor(cursor)
+        assertEquals(cliente, clienteBD)
+
+        db.close()
+    }
+
 }
