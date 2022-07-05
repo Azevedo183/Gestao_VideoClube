@@ -25,7 +25,7 @@ class BaseDeDadosTest {
         filme.id = TabelaBDFilmes(db).insert(filme.toContentValues())
         assertNotEquals(-1, filme.id)
     }
-    private fun insereCliente(db: SQLiteDatabase, cliente: Cliente){
+    private fun insereCliente(db: SQLiteDatabase, cliente: Filmes){
         cliente.id = TabelaBDCliente(db).insert(cliente.toContentValues())
         assertNotEquals(-1, cliente.id)
     }
@@ -71,7 +71,7 @@ class BaseDeDadosTest {
     fun consegueInserirCliente(){
         val db = getWritableDatabase()
 
-        val cliente = Cliente("Armando Azevedo", "900000000")
+        val cliente = Filmes("Armando Azevedo", "900000000")
         insereCliente(db, cliente)
 
         db.close()
@@ -128,7 +128,7 @@ class BaseDeDadosTest {
     fun consegueAlterarCliente(){
         val db = getWritableDatabase()
 
-        val cliente = Cliente("José", "8")
+        val cliente = Filmes("José", "8")
         insereCliente(db, cliente)
 
         cliente.nome = "Alberto"
@@ -186,7 +186,7 @@ class BaseDeDadosTest {
     fun consegueEliminarCliente(){
         val db = getWritableDatabase()
 
-        val cliente = Cliente("Rodrigo Alberto","987456123")
+        val cliente = Filmes("Rodrigo Alberto","987456123")
         insereCliente(db, cliente)
 
         val registoEliminados = TabelaBDCliente(db).delete(

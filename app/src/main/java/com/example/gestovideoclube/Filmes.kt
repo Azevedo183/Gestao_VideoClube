@@ -1,59 +1,87 @@
 package com.example.gestovideoclube
 
+import android.database.Cursor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
+import androidx.loader.content.Loader
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.gestovideoclube.databinding.FragmentFilmesBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Filmes.newInstance] factory method to
- * create an instance of this fragment.
- */
-class Filmes : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class Filmes : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    var filmeSelecionado : Filmes? = null
+        get() = field
+        set(value) {
+            field = value
+
         }
-    }
+
+
+    private var _binding: FragmentFilmesBinding? = null
+    private var adapterFilmes : adapterFilmes? = null
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_filmes, container, false)
+
+        _binding = FragmentFilmesBinding.inflate(inflater, container, false)
+        return binding.root
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Filmes.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Filmes().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        LoaderManager.getInstance(this).initLoader(ID_LOADER_FILME, null, this)
+
+        adapterClientes = adapterClientes(this)
+        binding.recyclerViewFilmes.adapter = adapterFilmes
+        binding.recyclerViewFilmes.layoutManager = LinearLayoutManager(requireContext())
+
+
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> =
+        CursorLoader(
+            requireContext(),
+            ContentProviderFilmes.ENDERECO_NOME,
+            TabelaBDFilmes.TODAS_COLUNAS,
+            null,
+            null,
+            "${TabelaBDFilmes.titulo_filme}"
+        )
+
+
+    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
+        adapterFilmes!!.cursor = data
+    }
+
+
+    override fun onLoaderReset(loader: Loader<Cursor>) {
+        if (_binding == null) return
+        adapterFilmes!!.cursor = null
+    }
+
+
+    companion object {
+        const val ID_LOADER_FILME = 0
+    }
+
 }

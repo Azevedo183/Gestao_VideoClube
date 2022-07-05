@@ -3,9 +3,7 @@ package com.example.gestovideoclube
 import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import android.widget.TextView
-import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.RecyclerView
 
 class adapterClientes(val fragment: Clientes) :RecyclerView.Adapter<adapterClientes.ViewHolderClientes>() {
@@ -26,9 +24,9 @@ class adapterClientes(val fragment: Clientes) :RecyclerView.Adapter<adapterClien
             itemClientes.setOnClickListener(this)
         }
 
-        var clientes: Cliente? = null
+        var clientes: Filmes? = null
             get() = field
-            set(value: Cliente?) {
+            set(value: Filmes?) {
                 field = value
 
                 textViewNome.text = clientes?.nome ?: ""
@@ -58,7 +56,7 @@ class adapterClientes(val fragment: Clientes) :RecyclerView.Adapter<adapterClien
 
     override fun onBindViewHolder(holder: ViewHolderClientes, position: Int) {
         cursor!!.moveToPosition(position)
-        holder.clientes = Cliente.fromCursor(cursor!!)
+        holder.clientes = Filmes.fromCursor(cursor!!)
     }
 
 

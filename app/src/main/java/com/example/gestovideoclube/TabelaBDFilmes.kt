@@ -1,11 +1,23 @@
 package com.example.gestovideoclube
 
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns
 
 class TabelaBDFilmes(db: SQLiteDatabase) : TabelaBD(db, NOME) {
     override fun cria() {
         db.execSQL("CREATE TABLE $nome (${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT, $titulo_filme TEXT NOT NULL, $ano_filme INT NOT NULL, $duracao_filme INT NOT NULL,$categoria_id INT NOT NULL, FOREIGN KEY ($categoria_id) REFERENCES ${TabelaBDCategorias.NOME}(${BaseColumns._ID}) ON DELETE RESTRICT)")
+    }
+
+    override fun query(
+        columns: Array<String>,
+        selection: String?,
+        selectionArgs: Array<String>?,
+        groupBy: String?,
+        having: String?,
+        orderBy: String?
+    ): Cursor {
+        return super.query(columns, selection, selectionArgs, groupBy, having, orderBy)
     }
 
     companion object {

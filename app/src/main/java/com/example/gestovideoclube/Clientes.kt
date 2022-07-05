@@ -15,7 +15,7 @@ import com.example.gestovideoclube.databinding.FragmentClientesBinding
 
 class Clientes : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
-    var clienteSelecionado : Cliente? = null
+    var clienteSelecionado : Filmes? = null
         get() = field
         set(value) {
             field = value
