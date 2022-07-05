@@ -43,7 +43,7 @@ class adapterClientes(val fragment: Clientes) :RecyclerView.Adapter<adapterClien
         private fun seleciona() {
             itemView.setBackgroundResource(android.R.color.holo_orange_light)
             viewHolderSelecionado = this
-            fragment.clienteSeleccionado = clientes
+            fragment.clienteSelecionado = clientes
         }
 
         private fun desseleciona() {
