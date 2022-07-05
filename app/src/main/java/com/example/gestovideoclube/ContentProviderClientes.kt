@@ -4,7 +4,6 @@ import android.content.ContentProvider
 import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
-import android.database.sqlite.SQLiteOpenHelper
 import android.net.Uri
 import android.provider.BaseColumns
 
@@ -24,22 +23,24 @@ class ContentProviderClientes : ContentProvider() {
         selectionArgs: Array<out String>?,
         sortOrder: String?
     ): Cursor? {
-        requireNotNull(projection)
-
         val db = dbOpenHelper!!.readableDatabase
 
+        requireNotNull(projection)
         val colunas = projection as Array<String>
-        val selArgs = selection as Array<String>?
+
+        val argsSeleccao = selectionArgs as Array<String>?
 
         val id = uri.lastPathSegment
 
-        return when (getUriMatcher().match(uri)){
-            URI_NOME -> TabelaBDCliente(db).query(colunas, selection, selArgs, null, null, null, sortOrder)
-            URI_NUMERO -> TabelaBDCliente(db).query(colunas, selection, selArgs, null, null, null, sortOrder)
-            URI_NOME -> TabelaBDCliente(db).query(colunas,"${BaseColumns._ID}=?", arrayOf("$id"), null,null,null)
-            URI_NUMERO_ESPECIFICO -> TabelaBDCliente(db).query(colunas,"${BaseColumns._ID}=?", arrayOf("$id"), null,null,null)
+        val cursor = when (getUriMatcher().match(uri)) {
+            URI_NOME -> TabelaBDCliente(db).query(colunas, selection, argsSeleccao, null, null, sortOrder)
+            URI_NUMERO -> TabelaBDCliente(db).query(colunas, selection, argsSeleccao, null, null, sortOrder)
+            URI_NOME_ESPECIFICO -> TabelaBDCliente(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
+            URI_NUMERO_ESPECIFICO -> TabelaBDCliente(db).query(colunas, "${BaseColumns._ID}=?", arrayOf("${id}"), null, null, null)
             else -> null
         }
+
+        return cursor
     }
 
     override fun getType(uri: Uri): String? =
@@ -51,7 +52,7 @@ class ContentProviderClientes : ContentProvider() {
             else -> null
     }
 
-    override fun insert(uri: Uri, values: ContentValues): Uri? {
+    override fun insert(uri: Uri, values: ContentValues?): Uri? {
         val db = dbOpenHelper!!.writableDatabase
 
         requireNotNull(values)
@@ -61,35 +62,46 @@ class ContentProviderClientes : ContentProvider() {
             URI_NUMERO -> TabelaBDCliente(db).insert(values)
             else -> -1
         }
+        db.close()
+
         if(id == -1L) return null
 
         return Uri.withAppendedPath(uri, "$id")
     }
+
 
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
         val db = dbOpenHelper!!.writableDatabase
 
         val id = uri.lastPathSegment
 
-        return when (getUriMatcher().match(uri)) {
+        val registosApagados  = when (getUriMatcher().match(uri)) {
             URI_NOME_ESPECIFICO -> TabelaBDCliente(db).delete("${BaseColumns._ID}=?", arrayOf("$id"))
             URI_NUMERO_ESPECIFICO -> TabelaBDCliente(db).delete("${BaseColumns._ID}=?", arrayOf("$id"))
             else -> 0
         }
+        db.close()
+
+        return registosApagados
     }
 
-    override fun update(uri: Uri, values: ContentValues, selection: String?, selectionArgs: Array<out String>?): Int {
+    override fun update(uri: Uri,
+                        values: ContentValues?,
+                        selection: String?,
+                        selectionArgs: Array<out String>?):
+            Int {
         requireNotNull(values)
 
         val db = dbOpenHelper!!.writableDatabase
 
         val id = uri.lastPathSegment
 
-        return when (getUriMatcher().match(uri)) {
+        val registosAlterados = when (getUriMatcher().match(uri)) {
             URI_NOME_ESPECIFICO -> TabelaBDCliente(db).update(values, "${BaseColumns._ID}=?", arrayOf("$id"))
             URI_NUMERO_ESPECIFICO -> TabelaBDCliente(db).update(values,"${BaseColumns._ID}=?", arrayOf("$id"))
             else -> 0
         }
+        return registosAlterados
     }
 
     companion object{
@@ -104,11 +116,11 @@ class ContentProviderClientes : ContentProvider() {
         private const val MULTIPLOS_REGISTOS = "vnd.android.cursor.dir"
 
         private val EDERECO_BASE = Uri.parse("content://$AUTURIDADE")
-        val ENDERECO_NOME = Uri.withAppendedPath(EDERECO_BASE, TabelaBDCliente.nome_cliente)
-        val ENDERECO_NUM = Uri.withAppendedPath(EDERECO_BASE, TabelaBDCliente.cliente_numero)
+        val ENDERECO_NOME = Uri.withAppendedPath(EDERECO_BASE, TabelaBDCliente.NOME)
+        val ENDERECO_NUM = Uri.withAppendedPath(EDERECO_BASE, TabelaBDCliente.NOME)
 
         private fun getUriMatcher(): UriMatcher {
-            val uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
+            var uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
 
             uriMatcher.addURI(AUTURIDADE, TabelaBDCliente.nome_cliente, URI_NOME)
             uriMatcher.addURI(AUTURIDADE, "${TabelaBDCliente.NOME}/#", URI_NOME_ESPECIFICO)
@@ -118,13 +130,4 @@ class ContentProviderClientes : ContentProvider() {
             return  uriMatcher
         }
     }
-
-
-
-
-
-
-
-
-
 }

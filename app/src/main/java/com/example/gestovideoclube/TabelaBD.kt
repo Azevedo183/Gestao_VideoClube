@@ -6,7 +6,8 @@ import android.database.sqlite.SQLiteDatabase
 abstract class TabelaBD(val db: SQLiteDatabase, val nome: String) {
     abstract fun cria()
 
-    fun insert(values: ContentValues) = db.insert(nome, null, values)
+    fun insert(values: ContentValues) =
+        db.insert(nome, null, values)
 
     fun update(values: ContentValues, whereClause: String, whereArgs: Array<String>) =
         db.update(nome, values, whereClause, whereArgs)
@@ -14,6 +15,6 @@ abstract class TabelaBD(val db: SQLiteDatabase, val nome: String) {
     fun delete(whereClause: String, whereArgs: Array<String>) =
         db.delete(nome, whereClause, whereArgs)
 
-    open fun query(columns: Array<String>, selection: String?, selectionArgs: Array<String>?, groupBy: String?, having: String?, orderBy: String?)
-            = db.query(nome, columns, selection, selectionArgs, groupBy, having, orderBy)
+    open fun query(columns: Array<String>, selection: String?, selectionArgs: Array<String>?, groupBy: String?, having: String?, orderBy: String?) =
+        db.query(nome, columns, selection, selectionArgs, groupBy, having, orderBy)
 }

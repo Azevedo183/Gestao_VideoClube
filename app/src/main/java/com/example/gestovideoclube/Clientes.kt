@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -14,19 +15,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-
-class Clientes : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class Clientes : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
 
-        }
     }
 
     override fun onCreateView(
@@ -57,16 +50,16 @@ class Clientes : Fragment() {
             }
     }
 
-    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> =
-        CursorLoader(
-            requireContext(),
-            ContentProviderClientes.ENDERECO_NOME,
-            TabelaBDCliente.TODAS_COLUNAS,
-            null,
-            null,
-            TabelaBDCliente.nome_cliente
-        )
-    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?){
-        adapterClientes!!.cursor = data
-    }
+    //override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> =
+        //CursorLoader(
+           // requireContext(),
+            //ContentProviderClientes.ENDERECO_NOME,
+            //TabelaBDCliente.TODAS_COLUNAS,
+            //null,
+          //  null,
+        //    TabelaBDCliente.nome_cliente
+      //  )
+    //override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?){
+      //  adapterClientes!!.cursor = data
+    //}
 }
