@@ -251,29 +251,29 @@ class BaseDeDadosTest {
         db.close()
     }
 
-    @Test
-    fun consegueLerClientes(){
-        val db = getWritableDatabase()
+   // @Test
+   // fun consegueLerClientes(){
+     //   val db = getWritableDatabase()
 
-        val cliente = Cliente("Tania","123456789")
-        insereCliente(db, cliente)
+     //   val cliente = Cliente("Tania","123456789")
+       // insereCliente(db, cliente)
 
-        val cursor = TabelaBDCliente(db).query(
-            TabelaBDCliente.TODAS_COLUNAS,
-            "${TabelaBDCliente.CAMPO_ID}=?",
-            arrayOf("${cliente.id}"),
-            null,
-            null,
-            null
-        )
+        //val cursor = TabelaBDCliente(db).query(
+          //  TabelaBDCliente.TODAS_COLUNAS,
+           // "${TabelaBDCliente.CAMPO_ID}=?",
+           // arrayOf("${cliente.id}"),
+           // null,
+           // null,
+           // null
+       // )
 
-        assertEquals(1, cursor.count)
-        assertTrue(cursor.moveToNext())
+        //assertEquals(1, cursor.count)
+        //assertTrue(cursor.moveToNext())
 
-        val clienteBD = Cliente.fromCursor(cursor)
-        assertEquals(cliente, clienteBD)
+        //val clienteBD = Cliente.fromCursor(cursor)
+        //assertEquals(cliente, clienteBD)
 
-        db.close()
-    }
+//        db.close()
+  //  }
 
 }

@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextNumber2">
 
         <AutoCompleteTextView
-            android:id="@+id/dropdown_field"
+            android:id="@+id/dropdown__field"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="0dp"
