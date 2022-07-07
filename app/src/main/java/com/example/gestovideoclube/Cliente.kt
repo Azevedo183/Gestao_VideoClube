@@ -4,7 +4,7 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
 
-data class Filmes(
+data class Cliente(
 
     var nome: String,
     var numero_telefone: String,
@@ -20,7 +20,7 @@ data class Filmes(
     }
 
     companion object {
-        fun fromCursor(cursor: Cursor) : Filmes {
+        fun fromCursor(cursor: Cursor) : Cliente {
             val posId = cursor.getColumnIndex(BaseColumns._ID)
             val posNome = cursor.getColumnIndex(TabelaBDCliente.nome_cliente)
             val posNumero = cursor.getColumnIndex(TabelaBDCliente.cliente_numero)
@@ -30,7 +30,7 @@ data class Filmes(
             val nome = cursor.getString(posNome)
             val numero = cursor.getString(posNumero)
 
-            return Filmes(nome, numero, id)
+            return Cliente(nome, numero, id)
         }
     }
 }

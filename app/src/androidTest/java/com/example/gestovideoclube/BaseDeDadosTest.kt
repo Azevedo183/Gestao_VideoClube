@@ -25,7 +25,7 @@ class BaseDeDadosTest {
         filme.id = TabelaBDFilmes(db).insert(filme.toContentValues())
         assertNotEquals(-1, filme.id)
     }
-    private fun insereCliente(db: SQLiteDatabase, cliente: Filmes){
+    private fun insereCliente(db: SQLiteDatabase, cliente: Cliente){
         cliente.id = TabelaBDCliente(db).insert(cliente.toContentValues())
         assertNotEquals(-1, cliente.id)
     }
@@ -71,8 +71,8 @@ class BaseDeDadosTest {
     fun consegueInserirCliente(){
         val db = getWritableDatabase()
 
-        val cliente = Filmes("Armando Azevedo", "900000000")
-        insereCliente(db, cliente)
+        val clientes = Cliente("Armando Azevedo", "900000000")
+        insereCliente(db, clientes)
 
         db.close()
     }
@@ -128,7 +128,7 @@ class BaseDeDadosTest {
     fun consegueAlterarCliente(){
         val db = getWritableDatabase()
 
-        val cliente = Filmes("José", "8")
+        val cliente = Cliente("José", "8")
         insereCliente(db, cliente)
 
         cliente.nome = "Alberto"
@@ -186,7 +186,7 @@ class BaseDeDadosTest {
     fun consegueEliminarCliente(){
         val db = getWritableDatabase()
 
-        val cliente = Filmes("Rodrigo Alberto","987456123")
+        val cliente = Cliente("Rodrigo Alberto","987456123")
         insereCliente(db, cliente)
 
         val registoEliminados = TabelaBDCliente(db).delete(
@@ -251,21 +251,21 @@ class BaseDeDadosTest {
         db.close()
     }
 
-   // @Test
-   // fun consegueLerClientes(){
-     //   val db = getWritableDatabase()
+    //@Test
+    //fun consegueLerClientes(){
+        //val db = getWritableDatabase()
 
-     //   val cliente = Cliente("Tania","123456789")
-       // insereCliente(db, cliente)
+        //val cliente = Cliente("Tania","123456789")
+        //insereCliente(db, cliente)
 
         //val cursor = TabelaBDCliente(db).query(
-          //  TabelaBDCliente.TODAS_COLUNAS,
-           // "${TabelaBDCliente.CAMPO_ID}=?",
-           // arrayOf("${cliente.id}"),
-           // null,
-           // null,
-           // null
-       // )
+         //   TabelaBDCliente.TODAS_COLUNAS,
+         //   "${TabelaBDCliente.CAMPO_ID}=?",
+         //   arrayOf("${cliente.id}"),
+         //   null,
+         //   null,
+         //   null
+       //)
 
         //assertEquals(1, cursor.count)
         //assertTrue(cursor.moveToNext())
@@ -273,7 +273,7 @@ class BaseDeDadosTest {
         //val clienteBD = Cliente.fromCursor(cursor)
         //assertEquals(cliente, clienteBD)
 
-//        db.close()
-  //  }
+      //  db.close()
+    //}
 
 }

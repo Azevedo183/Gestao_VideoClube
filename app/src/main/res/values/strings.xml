@@ -25,4 +25,8 @@
     <string name="Name_Filmes">Movie Title</string>
     <string name="Ano_Filme">Movie Year</string>
     <string name="Filme_Duração">Movie Time</string>
+    <string name="nome_obrigatorio">Nome Obrigatorio</string>
+    <string name="numero_obrigatorio">Numero Obrigatorio</string>
+    <string name="cliente_guardado_sucesso">Client Saved</string>
+    <string name="erro_guardar_cliente">Client not Saved</string>
 </resources>

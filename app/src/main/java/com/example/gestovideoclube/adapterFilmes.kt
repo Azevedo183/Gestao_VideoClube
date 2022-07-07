@@ -30,9 +30,9 @@ class adapterFilmes(val fragment: Filmes) :RecyclerView.Adapter<adapterFilmes.Vi
             set(value: Filmes?) {
                 field = value
 
-                textViewTitulo.text = Filmes?.titulo_filme ?: ""
-                textViewAno.text = Filmes?.ano_filme?: ""
-                textViewCategoria.text = Filmes?.categoria?: ""
+                //textViewTitulo.text = Filmes?.titulo_filme ?: ""
+                //textViewAno.text = Filmes?.ano_filme?: ""
+                //textViewCategoria.text = Filmes?.categoria?: ""
             }
 
         override fun onClick(v: View?) {
@@ -58,7 +58,7 @@ class adapterFilmes(val fragment: Filmes) :RecyclerView.Adapter<adapterFilmes.Vi
 
     override fun onBindViewHolder(holder: ViewHolderFilmes, position: Int) {
         cursor!!.moveToPosition(position)
-        holder.filmes = Filmes.fromCursor(cursor!!)
+        //holder.filmes = Filmes.fromCursor(cursor!!)
     }
 
 

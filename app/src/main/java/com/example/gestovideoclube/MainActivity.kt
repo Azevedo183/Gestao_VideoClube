@@ -54,8 +54,7 @@ class MainActivity : AppCompatActivity() {
         val cliente_add = findViewById<FloatingActionButton>(R.id.add_cliente)
 
         cliente_add.setOnClickListener {
-            val intent = Intent(this, add_cliente::class.java)
-            startActivity(intent)
+            setContentView(R.layout.fragment_add_cliente)
         }
         filme_add.setOnClickListener{
             val intent = Intent(this, add_filme::class.java)

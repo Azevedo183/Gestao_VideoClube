@@ -29,8 +29,8 @@ class adapterClientes(val fragment: Clientes) :RecyclerView.Adapter<adapterClien
             set(value: Filmes?) {
                 field = value
 
-                textViewNome.text = clientes?.nome ?: ""
-                textViewNumero.text = clientes?.numero_telefone?: ""
+                //textViewNome.text = clientes?.nome ?: ""
+                //textViewNumero.text = clientes?.numero_telefone?: ""
             }
 
         override fun onClick(v: View?) {
@@ -56,7 +56,7 @@ class adapterClientes(val fragment: Clientes) :RecyclerView.Adapter<adapterClien
 
     override fun onBindViewHolder(holder: ViewHolderClientes, position: Int) {
         cursor!!.moveToPosition(position)
-        holder.clientes = Filmes.fromCursor(cursor!!)
+        //holder.clientes = Filmes.fromCursor(cursor!!)
     }
 
 

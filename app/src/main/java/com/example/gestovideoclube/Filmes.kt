@@ -45,7 +45,7 @@ class Filmes : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
         LoaderManager.getInstance(this).initLoader(ID_LOADER_FILME, null, this)
 
-        adapterClientes = adapterClientes(this)
+        adapterFilmes = adapterFilmes(  this)
         binding.recyclerViewFilmes.adapter = adapterFilmes
         binding.recyclerViewFilmes.layoutManager = LinearLayoutManager(requireContext())
 
@@ -65,7 +65,7 @@ class Filmes : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             TabelaBDFilmes.TODAS_COLUNAS,
             null,
             null,
-            "${TabelaBDFilmes.titulo_filme}"
+            "${TabelaBDFilmes.NOME}"
         )
 
 

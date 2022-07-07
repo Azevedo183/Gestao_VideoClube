@@ -105,7 +105,7 @@ class ContentProviderFilmes : ContentProvider() {
         val registosAlterados = when (getUriMatcher().match(uri)) {
             URI_TITULO_ESPECIFICO -> TabelaBDFilmes(db).update(values, "${BaseColumns._ID}=?", arrayOf("$id"))
             URI_ANO_ESPECIFICO -> TabelaBDFilmes(db).update(values,"${BaseColumns._ID}=?", arrayOf("$id"))
-            Companion.URI_DURACAO_ESPECIFICO -> TabelaBDFilmes(db).update(values,"${BaseColumns._ID}=?", arrayOf("$id"))
+            URI_DURACAO_ESPECIFICO -> TabelaBDFilmes(db).update(values,"${BaseColumns._ID}=?", arrayOf("$id"))
             else -> 0
         }
         return registosAlterados

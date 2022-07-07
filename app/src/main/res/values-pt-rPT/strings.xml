@@ -19,4 +19,8 @@
     <string name="Name_Filmes">Titulo do Filme</string>
     <string name="Ano_Filme">Ano do Filme</string>
     <string name="Filme_Duração">Duração do Filme</string>
+    <string name="nome_obrigatorio">Nome Obrigatorio</string>
+    <string name="numero_obrigatorio">Numero Obrigatorio</string>
+    <string name="cliente_guardado_sucesso">Cliente guardado com sucesso</string>
+    <string name="erro_guardar_cliente">Cliente não salvo</string>
 </resources>

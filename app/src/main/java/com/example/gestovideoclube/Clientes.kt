@@ -65,7 +65,7 @@ class Clientes : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             TabelaBDCliente.TODAS_COLUNAS,
             null,
             null,
-            "${TabelaBDCliente.nome_cliente}"
+            "${TabelaBDCliente.NOME}"
         )
 
 
